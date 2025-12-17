@@ -35,13 +35,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Syncfusion.OfficeChartToImageConverter.Wpf" Version="27.2.5" />
-        <PackageReference Include="Syncfusion.Presentation.Wpf" Version="27.2.5" />
-        <PackageReference Include="Syncfusion.PresentationToPdfConverter.Wpf" Version="27.2.5" />
-        <PackageReference Include="Syncfusion.SfRichTextBoxAdv.WPF" Version="27.2.5" />
-        <PackageReference Include="Syncfusion.SfSpreadsheetHelper.WPF" Version="27.2.5" />
-        <PackageReference Include="Syncfusion.Tools.WPF" Version="27.2.5" />
-        <PackageReference Include="Syncfusion.XlsIO.Wpf" Version="27.2.5" />
+        <PackageReference Include="Syncfusion.OfficeChartToImageConverter.Wpf" Version="32.1.19" />
+        <PackageReference Include="Syncfusion.Presentation.Wpf" Version="32.1.19" />
+        <PackageReference Include="Syncfusion.PresentationToPdfConverter.Wpf" Version="32.1.19" />
+        <PackageReference Include="Syncfusion.SfRichTextBoxAdv.WPF" Version="32.1.19" />
+        <PackageReference Include="Syncfusion.SfSpreadsheetHelper.WPF" Version="32.1.19" />
+        <PackageReference Include="Syncfusion.Tools.WPF" Version="32.1.19" />
+        <PackageReference Include="Syncfusion.XlsIO.Wpf" Version="32.1.19" />
         <Reference Include="QuickLook.Plugin.PDFViewer">
             <HintPath>QuickLook.Plugin.PDFViewer\QuickLook.Plugin.PDFViewer.dll</HintPath>
             <Private>False</Private>

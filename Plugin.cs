@@ -20,42 +20,41 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 
-namespace QuickLook.Plugin.OfficeViewer
+namespace QuickLook.Plugin.OfficeViewer;
+
+public class Plugin : IViewer
 {
-    public class Plugin : IViewer
+    private readonly string[] _formats =
+        [".doc", ".docm", ".docx", ".rtf", ".xls", ".xlsx", ".xlsm", ".pptx", ".pptm", ".potx", ".potm"];
+
+    public int Priority => 0;
+
+    public void Init()
     {
-        private readonly string[] _formats =
-            [".doc", ".docm", ".docx", ".rtf", ".xls", ".xlsx", ".xlsm", ".pptx", ".pptm", ".potx", ".potm"];
+        SyncfusionKey.Register();
+    }
 
-        public int Priority => 0;
+    public bool CanHandle(string path)
+    {
+        return !Directory.Exists(path) && _formats.Contains(Path.GetExtension(path).ToLower());
+    }
 
-        public void Init()
-        {
-            SyncfusionKey.Register();
-        }
+    public void Prepare(string path, ContextObject context)
+    {
+        context.SetPreferredSizeFit(new Size { Width = 1920, Height = 1440 }, 0.9d);
+    }
 
-        public bool CanHandle(string path)
-        {
-            return !Directory.Exists(path) && _formats.Contains(Path.GetExtension(path).ToLower());
-        }
+    public void View(string path, ContextObject context)
+    {
+        var viewer = SyncfusionControl.Open(path);
 
-        public void Prepare(string path, ContextObject context)
-        {
-            context.SetPreferredSizeFit(new Size { Width = 1920, Height = 1440 }, 0.9d);
-        }
+        context.ViewerContent = viewer;
+        context.Title = $"{Path.GetFileName(path)}";
 
-        public void View(string path, ContextObject context)
-        {
-            var viewer = SyncfusionControl.Open(path);
+        context.IsBusy = false;
+    }
 
-            context.ViewerContent = viewer;
-            context.Title = $"{Path.GetFileName(path)}";
-
-            context.IsBusy = false;
-        }
-
-        public void Cleanup()
-        {
-        }
+    public void Cleanup()
+    {
     }
 }
